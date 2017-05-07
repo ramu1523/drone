@@ -1,0 +1,34 @@
+# Drone version 0.5
+#pipeline:
+#  build:
+#    image: drone_test
+#    url: 10.113.143.181:8082
+#    value: from_drone
+#pipeline:
+#  build:
+#    image: library/openjdk:8-jdk
+#    commands:
+#      - ./gradlew clean build
+#    when:
+#      event: [push, pull_request]
+pipeline:
+  build:
+    image: library/openjdk:8-jdk
+    commands:
+      - ./gradlew clean build
+    when:
+      event: push
+      branch: master
+  build_pull:
+    image: library/openjdk:8-jdk
+    commands:
+      - ./gradlew clean build
+    when:
+      event: pull_request
+      branch: master
+  notify:
+    image: plugins/slack
+    when:
+      status: [ success, failure ] 
+    recipients: ramu1523@gmail.com
+#    	
