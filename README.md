@@ -14,13 +14,13 @@ Step 4: crate the below two env variables as below
 export PLUGIN_URL=IP Address of your machine:port number (Ex: 10.20.233.222:8082 or localhost:8082)
 export PLUGIN_VALUE=Input parameter for your app (ex:- siva)
 
-Step 5: create a script.sh file in your project and add the below content.
+Step 5: create a script.sh file in your root of repository/project and add the below content.
 curl ${PLUGIN_URL}/${PLUGIN_VALUE}
 
 Step 6: Give execute permissions to the script.sh file as below
 Chmod 777 script.sh
 
-Step 6: Create a Dockerfile in the project to create docker image.
+Step 6: Create a Dockerfile in your root of repository/project to create docker image.
 FROM centos:7
 
  ADD script.sh /bin/
@@ -46,8 +46,16 @@ http://localhost:8082/ramu
 
 Step 12: Refer the below site to configure Git, Artifactory, Docker ,Dock-CUBE, ...etc plugins in your .drone.yml file to enable CICD for your project using drone.
 http://plugins.drone.io
+http://readme.drone.io
+
+Step 13:
+Install the drone server as specified below
+http://readme.drone.io/0.5/install/server/
 
 
+Step 14:
+execute the below command to test your drone builds in your local.
+drone exec
 
 
 
